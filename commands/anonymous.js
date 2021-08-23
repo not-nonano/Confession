@@ -33,7 +33,7 @@ module.exports = {
 
                 interaction.editReply({ content: 'Thank you for using this bot!' })
 
-                client.guilds.cache.get(guildId).channels.cache.get('879364771902799874')
+                client.guilds.cache.get('874218440917942325').channels.cache.get('879364771902799874')
                     .send({
                         embeds: [
                             new MessageEmbed()
