@@ -4,6 +4,8 @@
 
 Fill up all environment variables at .env file
 
+You need to install Node.js 16.6.X [here](https://nodejs.org/en/)
+
 Note: This bot uses Microsoft SQL(mssql)
 
 ```
