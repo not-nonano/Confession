@@ -27,28 +27,23 @@ module.exports = {
         async (interaction) => {
             interaction.deferReply().then(async () => {
 
-                const { client, user } = interaction
-                const channel = await client.confessionChannel.get(process.env.GUILD_ID)
-                if (channel) {
+                const { client, user, guildId } = interaction
 
-                    const context = interaction.options.getString('context')
+                const context = interaction.options.getString('context')
 
-                    interaction.editReply({ content: 'Thank you for using this bot!' })
+                interaction.editReply({ content: 'Thank you for using this bot!' })
 
-                    client.confessionChannel.get(process.env.GUILD_ID)
-                        .send({
-                            embeds: [
-                                new MessageEmbed()
-                                    .setColor('BLUE')
-                                    .setAuthor(user.tag, user.avatarURL())
-                                    .setTitle('Student Grievance')
-                                    .setDescription(context)
-                                    .setFooter(`USER_ID: ${user.id}`)
-                            ]
-                        })
-                } else {
-                    interaction.editReply({ content: 'Bot configuration not yet set' })
-                }
+                client.guilds.cache.get(guildId).channels.cache.get('879364771902799874')
+                    .send({
+                        embeds: [
+                            new MessageEmbed()
+                                .setColor('BLUE')
+                                .setAuthor(user.tag, user.avatarURL())
+                                .setTitle('Student Grievance')
+                                .setDescription(context)
+                                .setFooter(`USER_ID: ${user.id}`)
+                        ]
+                    })
 
             })
         }

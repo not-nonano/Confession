@@ -45,6 +45,15 @@ module.exports = {
         async (interaction) => {
             interaction.deferReply().then(async () => {
 
+                return interaction.editReply({
+                    embeds: [
+                        new MessageEmbed()
+                            .setColor('BLUE')
+                            .setTitle('NU-Anonymous')
+                            .setDescription('Change into static data. DM <#428832564514390019> if you have questions')
+                    ]
+                })
+
                 const { guildId, client } = interaction
 
                 await sql.connect(sqlConfig)
@@ -54,7 +63,7 @@ module.exports = {
                 if (recordset[0]) {
                     await sql.connect(sqlConfig)
                     await sql.query`UPDATE Channel SET channelId = ${channel.id} WHERE guildId = ${guildId}`
-                    let confessionChannel = client.confessionChannel.get(guildId) 
+                    let confessionChannel = client.confessionChannel.get(guildId)
                     confessionChannel = client.guilds.cache.get(guildId).channels.cache.get(channel.id)
                 } else {
                     await sql.connect(sqlConfig)
