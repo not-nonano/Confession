@@ -19,20 +19,7 @@ const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
 
 		await rest.put(
 			Routes.applicationCommands(process.env.DISCORD_APPLICATION_ID),
-			{ body: [
-				{
-					name: 'confession',
-					description: 'Send confession',
-					options: [
-						{
-							name: 'context',
-							description: 'the context.',
-							type: 3,
-							required: true
-						}
-					]
-				}
-			] },
+			{ body: [commands] },
 		);
 		console.log('Successfully reloaded application (/) commands.');
 	} catch (error) {

@@ -1,22 +1,4 @@
 const { Client } = require('discord.js')
-require('dotenv').config()
-const sql = require('mssql')
-const sqlConfig = {
-    user: process.env.DB_USER,
-    password: process.env.DB_PWD,
-    database: process.env.DB_NAME,
-    server: 'localhost',
-    pool: {
-        max: 10,
-        min: 0,
-        idleTimeoutMillis: 30000
-    },
-    options: {
-        encrypt: true, // for azure
-        trustServerCertificate: true, // change to true for local dev / self-signed certs
-        enableArithAbort: true
-    }
-}
 
 
 module.exports = {
@@ -28,14 +10,6 @@ module.exports = {
      */
     async execute(client) {
         try {
-
-            client.guilds.cache.forEach(async guild => {
-                await sql.connect(sqlConfig)
-                const { recordset } = await sql.query`SELECT * FROM Channel WHERE guildId = ${guild.id}`
-                if (recordset[0]) {
-                    client.confessionChannel.set(guild.id, client.guilds.cache.get(recordset[0].guildId).channels.cache.get(recordset[0].channelId))
-                }
-            })
 
             const stringlength = 69;
             console.log("\n")
