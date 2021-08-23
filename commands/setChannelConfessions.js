@@ -50,7 +50,7 @@ module.exports = {
                         new MessageEmbed()
                             .setColor('BLUE')
                             .setTitle('NU-Anonymous')
-                            .setDescription('Change into static data. DM <#428832564514390019> if you have questions')
+                            .setDescription('Change into static data. DM <@428832564514390019> if you have questions')
                     ]
                 })
 
