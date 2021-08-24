@@ -17,10 +17,30 @@ const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
 	try {
 		console.log('Started refreshing application (/) commands.');
 
+		// await rest.put(
+		// 	Routes.applicationCommands('879357765850628136'),
+		// 	{ body: commands },
+		// );
+
+
+		// await rest.put(
+		//     Routes.applicationGuildCommands("879357765850628136", '874218440917942325'),
+		//     { body: [] },
+		// );
+
 		await rest.put(
-			Routes.applicationCommands(process.env.DISCORD_APPLICATION_ID),
-			{ body: [commands] },
+			Routes.applicationCommandPermissions("879357765850628136", '874218440917942325', '879394156022210561'),
+			{
+				body: 
+					{
+						id: "428832564514390019",
+						type: 2,
+						permission: true
+					}
+				
+			},
 		);
+
 		console.log('Successfully reloaded application (/) commands.');
 	} catch (error) {
 		console.error(error);
