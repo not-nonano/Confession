@@ -10,6 +10,19 @@ module.exports = {
      */
     async execute(client) {
         try {
+            const command = await client.guilds.cache.get('874218440917942325')?.commands.fetch('879394156022210561');
+            console.log(command)
+            const permissions = [
+                {
+                    id: '428832564514390019',
+                    type: 'USER',
+                    permission: true,
+                },
+            ];
+
+            await command.permissions.add({ permissions });
+
+           
 
             const stringlength = 69;
             console.log("\n")

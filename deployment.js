@@ -28,18 +28,29 @@ const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
 		//     { body: [] },
 		// );
 
+		// await rest.put(
+		// 	Routes.applicationCommandPermissions("879357765850628136", '874218440917942325', '879394156022210561'),
+		// 	{
+		// 		body: 
+		// 			{
+		// 				id: "428832564514390019",
+		// 				type: 2,
+		// 				permission: true
+		// 			}
+
+		// 	},
+		// );
+
 		await rest.put(
 			Routes.applicationCommandPermissions("879357765850628136", '874218440917942325', '879394156022210561'),
 			{
-				body: 
-					{
-						id: "428832564514390019",
-						type: 2,
-						permission: true
-					}
-				
-			},
-		);
+				body:
+				{
+					id: "428832564514390019",
+					type: 2,
+					permission: true
+				}
+			});
 
 		console.log('Successfully reloaded application (/) commands.');
 	} catch (error) {
